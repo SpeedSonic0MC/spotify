@@ -104,7 +104,7 @@ app.get("/current-song-data", (_, res) => {
 		})
 			.catch(() => res.json({ error: "failed" }))
 			.then((e) => {
-				if ([401, 403, 429].includes()) {
+				if ([401, 403, 429].includes(e.status)) {
 					openAuthorization();
 					return res.json({ error: "failed" });
 				}
